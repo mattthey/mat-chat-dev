@@ -1,0 +1,43 @@
+/* Spring Boot Application conventions.
+* SHOULD be used directly in upper-level Spring Boot Application modules only.
+* */
+plugins {
+    id 'mat-chat.java-conventions'
+    id 'org.springframework.boot'
+}
+
+jar {
+    enabled = false
+}
+
+tasks.named("bootJar") {
+    layered {
+        application {
+            intoLayer("spring-boot-loader") {
+                include "org/springframework/boot/loader/**"
+            }
+            intoLayer("application")
+        }
+        dependencies {
+            intoLayer("application") {
+                includeProjectDependencies()
+            }
+            intoLayer("inner-source-dependencies") {
+                include "com.github.mattthey.*"
+            }
+            intoLayer("third-party-dependencies")
+        }
+        layerOrder = ["spring-boot-loader", "third-party-dependencies", "inner-source-dependencies", "application"]
+    }
+}
+
+ext {
+    set('jakarta-servlet.version', '5.0.0')
+}
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-jetty'
+}

@@ -1,0 +1,6 @@
+mat-chat:
+  datasource:
+    main:
+      jdbc-url: "jdbc:postgresql://localhost:15432/mat_chat_dev"
+      username: "mat_chat_dev"
+      password: "mat_chat_dev"

@@ -1,0 +1,51 @@
+/* Base Java conventions.
+* SHOULD be used for conventions inheritance or directly in Java modules without framework integrations only.
+* */
+plugins {
+    id 'mat-chat.dependency-conventions'
+    id 'java'
+    id 'io.freefair.lombok'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+compileJava {
+    options.encoding = 'UTF-8'
+    /* Required to store formal parameter names of constructors and methods in the generated class file
+     so that the method java.lang.reflect.Executable.getParameters from the Reflection API can retrieve them. */
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+/* Mandatory dependencies. */
+dependencies {
+    /* Third-party dependencies */
+    implementation 'org.slf4j:slf4j-api'
+
+    // Jakarta annotations compile only dependency.
+    compileOnly 'jakarta.persistence:jakarta.persistence-api'
+    testCompileOnly 'jakarta.persistence:jakarta.persistence-api'
+
+    // indexer to optimize scanning beans
+    annotationProcessor 'org.springframework:spring-context-indexer'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.fork = true
+}
+
+/* Test platform JUnit configuration. */
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+
+    testLogging {
+        exceptionFormat = 'full'
+        events 'passed', 'skipped', 'failed'
+    }
+
+    systemProperty 'spring.profiles.include', 'ut'
+}

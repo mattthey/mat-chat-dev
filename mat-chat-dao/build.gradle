@@ -1,0 +1,14 @@
+plugins {
+    id 'mat-chat.java-conventions'
+}
+
+dependencies {
+
+    /* Project dependencies. */
+    implementation project(':mat-chat-datasource')
+
+    /* Third-party dependencies. */
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+
+    /* Test dependencies. */
+}

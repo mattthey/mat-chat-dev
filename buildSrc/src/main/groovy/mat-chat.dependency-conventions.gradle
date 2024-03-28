@@ -1,0 +1,69 @@
+/* Dependency Management conventions.
+* SHOULD be used for conventions inheritance only.
+* */
+plugins {
+    id 'mat-chat.module-conventions'
+    id 'io.spring.dependency-management'
+}
+
+/* Dependency versions. */
+ext {
+    /* BOM versions. */
+    mockitoVersion = '5.3.1'
+    jacksonVersion = '2.15.0'
+
+    /* Spring dependencies versions. */
+    springBootVersion = '3.1.4'
+
+    /* Third-party dependencies versions. */
+    jakartaPersistanceApiVersion = '3.1.0'
+    postgresqlDriverVersion = '42.7.0'
+    liquibaseVersion = '4.25.0'
+    hikariCPVersion = '5.1.0'
+    slf4jVersion = '2.0.7'
+    picocliVersion = '4.7.1'
+    jsonwebtokenVersion = '0.12.5'
+
+    /* Test dependencies versions. */
+    junitVersion = '5.8.1'
+    testContainersVersion = '1.19.3'
+    assertJVersion = '3.25.1'
+}
+
+/* Dependency management. */
+dependencyManagement {
+    imports {
+        mavenBom "org.mockito:mockito-bom:$mockitoVersion"
+        mavenBom "com.fasterxml.jackson:jackson-bom:$jacksonVersion"
+
+        /* Spring dependencies BOM. */
+        mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
+    }
+
+    dependencies {
+        /* Third-party dependency management. */
+        dependency "jakarta.persistence:jakarta.persistence-api:$jakartaPersistanceApiVersion"
+        dependency "org.postgresql:postgresql:$postgresqlDriverVersion"
+        dependency "com.zaxxer:HikariCP:$hikariCPVersion"
+        dependency "org.liquibase:liquibase-core:$liquibaseVersion"
+        dependency "org.slf4j:slf4j-api:$slf4jVersion"
+        dependency "info.picocli:picocli:$picocliVersion"
+        dependency "io.jsonwebtoken:jjwt-api:$jsonwebtokenVersion"
+        dependency "io.jsonwebtoken:jjwt-impl:$jsonwebtokenVersion"
+        dependency "io.jsonwebtoken:jjwt-jackson:$jsonwebtokenVersion"
+
+
+
+        /* Spring dependency management. */
+
+        /* Test dependency management. */
+        dependency "org.junit.jupiter:junit-jupiter:$junitVersion"
+        dependency "org.testcontainers:testcontainers:$testContainersVersion"
+        dependency "org.testcontainers:junit-jupiter:$testContainersVersion"
+        dependency "org.testcontainers:postgresql:$testContainersVersion"
+        dependency "org.assertj:assertj-core:$assertJVersion"
+
+        /* Sprint Test dependency management. */
+    }
+
+}

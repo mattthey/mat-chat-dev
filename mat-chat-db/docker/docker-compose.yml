@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mat-chat-db:
+    container_name: 'mat-chat-db'
+    image: "postgres:14.11-alpine3.19"
+    restart: always
+    environment:
+      POSTGRES_DB: mat_chat_dev
+      POSTGRES_USER: mat_chat_dev
+      POSTGRES_PASSWORD: mat_chat_dev
+    volumes:
+      - ../init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - '15432:5432'

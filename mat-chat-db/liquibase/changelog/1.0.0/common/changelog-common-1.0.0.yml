@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - logicalFilePath: liquibase/changelog/1.0.0/common/changelog-common-1.0.0.yml
+
+  - changeSet:
+      id: 01-create-table-data_schema_info
+      author: 1.0.0
+      changes:
+        - sqlFile:
+            path: sql/01-create-table-data_schema_info.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/01-create-table-data_schema_info-rollback.sql
+            relativeToChangelogFile: true

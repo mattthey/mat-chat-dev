@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="mat_chat_app" type="Application" factoryName="Application">
+    <envs>
+      <env name="spring.config.additional-location" value="file:$PROJECT_DIR$/.local/config/" />
+      <env name="spring.profiles.active" value="dev" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.github.mattthey.chat.MatChatApplication" />
+    <module name="mat-chat.mat-chat-app.main" />
+    <option name="VM_PARAMETERS" value="-Ddebug=true -Dlog.debug=true -Dfile.encoding=UTF-8" />
+    <method v="2">
+      <option name="Gradle.BeforeRunTask" enabled="false" tasks="clean build" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="-x compileTestJava -x test" />
+    </method>
+  </configuration>
+</component>

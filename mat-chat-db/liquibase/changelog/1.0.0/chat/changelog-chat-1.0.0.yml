@@ -1,0 +1,58 @@
+databaseChangeLog:
+  - logicalFilePath: liquibase/changelog/1.0.0/chat/changelog-chat-1.0.0.yml
+
+  - changeSet:
+      id: 01-create-table-users
+      author: 1.0.0
+      changes:
+        - sqlFile:
+            path: sql/01-create-table-users.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/01-create-table-users-rollback.sql
+            relativeToChangelogFile: true
+
+  - changeSet:
+      id: 02-create-table-conversations
+      author: 1.0.0
+      changes:
+        - sqlFile:
+            path: sql/02-create-table-conversations.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/02-create-table-conversations-rollback.sql
+            relativeToChangelogFile: true
+
+  - changeSet:
+      id: 03-create-table-messages
+      author: 1.0.0
+      changes:
+        - sqlFile:
+            path: sql/03-create-table-messages.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/03-create-table-messages-rollback.sql
+            relativeToChangelogFile: true
+
+  - changeSet:
+      id: 04-create-table-conversation_users
+      author: 1.0.0
+      changes:
+        - sqlFile:
+            path: sql/04-create-table-conversation_users.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            path: sql/04-create-table-conversation_users-rollback.sql
+            relativeToChangelogFile: true

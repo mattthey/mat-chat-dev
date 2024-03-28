@@ -1,0 +1,5 @@
+/* Root conventions for all project modules
+* SHOULD be used for conventions inheritance or directly in aggregation modules only.
+* */
+group 'com.github.mattthey'
+version '1.0.0-SNAPSHOT'

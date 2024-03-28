@@ -1,0 +1,26 @@
+# 1.0.0
+databaseChangeLog:
+  - logicalFilePath: liquibase/changelog/1.0.0/changelog-1.0.0.yml
+
+  - include:
+      file: common/changelog-common-1.0.0.yml
+      relativeToChangelogFile: true
+  - include:
+      file: chat/changelog-chat-1.0.0.yml
+      relativeToChangelogFile: true
+
+  # Data schema version
+  - changeSet:
+      id: data-schema-1.0.0
+      author: 1.0.0
+      changes:
+        - insert:
+            tableName: data_schema_info
+            columns:
+              - column:
+                  name: version
+                  value: "1.0.0"
+      rollback:
+        - delete:
+            tableName: data_schema_info
+            where: version = '1.0.0'

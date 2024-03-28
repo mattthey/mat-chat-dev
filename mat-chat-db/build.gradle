@@ -1,0 +1,40 @@
+plugins {
+    id 'mat-chat.liquibase-conventions'
+    id 'java'
+}
+
+ext {
+    liquibaseChangeLogFilePath = 'liquibase/changelog/changelog.yml'
+    liquibasePropertiesFilePath = 'liquibase/config/liquibase.properties'
+    liquibaseOutputFilePath = "$buildDir/liquibase/sql-migration.sql"
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir projectDir
+            /* Includes only */
+            include 'init/**'
+            include 'liquibase/**'
+        }
+    }
+}
+
+liquibase {
+    new File("build/liquibase").mkdirs()
+    def props = new Properties()
+    file(liquibasePropertiesFilePath).withInputStream {
+        props.load(it)
+    }
+
+    activities {
+        main {
+            logLevel 'INFO'
+            changeLogFile liquibaseChangeLogFilePath
+            outputFile liquibaseOutputFilePath
+            url props.getProperty("url")
+            username props.getProperty("username")
+            password props.getProperty("password")
+        }
+    }
+}

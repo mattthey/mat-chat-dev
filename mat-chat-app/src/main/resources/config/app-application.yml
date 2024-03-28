@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: mat-chat
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+server:
+  shutdown: GRACEFUL
+  port: 8080
+  jetty:
+    connection-idle-timeout: 60s
+    threads:
+      idle-timeout: 30s
+      max: 32
+      min: 16

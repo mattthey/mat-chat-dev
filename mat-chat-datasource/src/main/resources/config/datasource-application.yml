@@ -1,0 +1,16 @@
+mat-chat:
+  datasource:
+    main:
+      jdbc-url: "" # SHOULD be overridden by inventory properties
+      username: "" # SHOULD be overridden by inventory properties
+      password: "" # SHOULD be overridden by inventory properties
+      type: "com.zaxxer.hikari.HikariDataSource"
+      driver-class-name: "org.postgresql.Driver"
+      pool-name: "MAT_CHAT_DB_POOL"
+      minimum-idle: 8
+      maximum-pool-size: 8
+      idle-timeout: 30000 # milliseconds
+      max-lifetime: 600000 # milliseconds
+      connection-timeout: 15000 # milliseconds
+      data-source-properties:
+        socketTimeout: 15000 # milliseconds

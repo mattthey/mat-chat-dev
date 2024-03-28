@@ -1,0 +1,28 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
+/* Gradle repositories settings. */
+pluginManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+/* Gradle dependency resolution settings. */
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'mat-chat'
+
+include 'mat-chat-app'
+include 'mat-chat-db'
+include 'mat-chat-api'
+include 'mat-chat-datasource'
+include 'mat-chat-dao'
+include 'mat-chat-impl'
+

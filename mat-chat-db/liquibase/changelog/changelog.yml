@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - logicalFilePath: liquibase/changelog/changelog.yml
+  - preConditions:
+      dbms:
+        type: "postgresql"
+
+  - property:
+      name: "mat_chat.appl_user"
+      value: "mat_chat_appl_user"
+
+  # 1.0.0
+  - include:
+      file: 1.0.0/changelog-1.0.0.yml
+      relativeToChangelogFile: true

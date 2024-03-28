@@ -1,0 +1,14 @@
+/* Liquibase conventions for project modules.
+* SHOULD be used directly in Liquibase integrated modules only.
+* */
+plugins {
+    id 'mat-chat.dependency-conventions'
+    id 'org.liquibase.gradle'
+}
+
+/* Liquibase runtime dependencies. */
+dependencies {
+    liquibaseRuntime 'org.postgresql:postgresql'
+    liquibaseRuntime 'org.liquibase:liquibase-core'
+    liquibaseRuntime 'info.picocli:picocli'
+}

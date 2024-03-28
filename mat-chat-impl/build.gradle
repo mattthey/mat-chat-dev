@@ -1,0 +1,21 @@
+plugins {
+    id 'mat-chat.java-conventions'
+}
+
+dependencies {
+
+    /* Project dependencies. */
+    implementation project(':mat-chat-dao')
+    implementation project(':mat-chat-datasource')
+
+    /* Spring Framework */
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+
+    /* Third-party dependencies. */
+    implementation 'io.jsonwebtoken:jjwt-impl'
+
+    /* Test dependencies */
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

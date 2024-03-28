@@ -1,0 +1,9 @@
+plugins {
+    id 'mat-chat.app-conventions'
+}
+
+dependencies {
+    implementation project(':mat-chat-api')
+    /* spring dependencies */
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+}
